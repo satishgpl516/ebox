@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 import Nav from './Nav';
 
 import bgimg from './img/bg.jpg'
@@ -76,7 +76,7 @@ const header = () => {
       <Section>
         <Title>See what's next.</Title>
         <Subtitle>WATCH ANYWHERE. CANCEL ANYTIME.</Subtitle>
-        <MainJoinButton>JOIN FREE FOR A MONTH</MainJoinButton>
+        <Link to="/signup"><MainJoinButton>REGISTER NOW</MainJoinButton></Link>
       </Section>
     </Header>
   )
