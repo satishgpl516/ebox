@@ -31,6 +31,8 @@ var Dashboard = createReactClass({
     this.setState({searchTerm : e.target.value});
   },
   render: function() {
+    console.log('logging in dash');
+    console.log(this.props.user);
     return (
       <div>
         <header className="Header">
@@ -235,7 +237,8 @@ var ListToggle = createReactClass({
 
 function mapStateToProps(state){
   return{
-    movies: state.moviesList
+    movies: state.moviesList,
+    user: state.user.data
   }
 }
 

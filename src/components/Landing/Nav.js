@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled, { css } from 'styled-components';
-
+import {LOGO} from '../../constants'
 import netflixlogo from './img/logo.svg';
 
 export const NavLogo = styled.nav`
@@ -49,7 +49,7 @@ const nav = () => {
   return (
     <NavLogo   >
       <a href={"/"} className="logo">
-        <img src={netflixlogo} alt="Netflix Logo" />
+        <img src={LOGO} width={'450px'} height={'100px'} alt="Netflix Logo"/>
       </a>
       <Button right><Link to='/signin'>Sign In</Link></Button>
       <Button right><Link to='/adminSignin'>Admin</Link></Button>

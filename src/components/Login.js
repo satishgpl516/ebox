@@ -66,7 +66,7 @@ class Login extends Component {
                     </button>
                 </form>
               </div>
-              <div className="login-signup-now">New to Netflix? <Link to="/signup">Sign up now</Link>.
+              <div className="login-signup-now">New to Ebox? <Link to="/signup">Sign up now</Link>.
               </div>
             </div>
           </div>f

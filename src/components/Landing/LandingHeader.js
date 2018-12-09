@@ -76,7 +76,7 @@ const header = () => {
       <Section>
         <Title>See what's next.</Title>
         <Subtitle>WATCH ANYWHERE. CANCEL ANYTIME.</Subtitle>
-        <MainJoinButton>JOIN FREE FOR A MONTH</MainJoinButton>
+        <MainJoinButton>JOIN FREE</MainJoinButton>
       </Section>
     </Header>
   )
