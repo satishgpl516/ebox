@@ -207,6 +207,7 @@ p {
     border: 3px solid transparent;
     -webkit-transition: border .125s ease;
     transition: border .125s ease;
+    background-color: transparent;
 }
 .UserProfile .User .image img {
     width: 100%;
@@ -492,4 +493,7 @@ p {
     justify-content: center;
     height: 32px;
     width: 32px;
+}
+.user-profile-svg{
+    background-color: white;
 }

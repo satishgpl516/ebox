@@ -14,6 +14,8 @@ export const USER = {
   SIGNUP_FAIL : "SIGNUP_FAIL",
   SIGN_UP: "SIGN_UP",
   SIGN_OUT : "SIGN_OUT",
+  SIGN_OUT_SUCCESS: "SIGN_OUT_SUCCESS",
+  SIGN_OUT_FAIL: "SIGN_OUT_FAIL"
 }
 
 export const MOVIE = {

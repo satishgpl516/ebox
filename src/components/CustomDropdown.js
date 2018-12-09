@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-
-class CustomDropDown extends Component {
-  constructor() {
-    super();
+import usersvg from "../img/user-solid.svg";
+import {Link} from 'react-router-dom';
+import {doSignout} from ''
+class CustomDropdown extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       showMenu: false,
@@ -31,11 +33,15 @@ class CustomDropDown extends Component {
     }
   }
 
+  handleSignout(){
+    this.props.doSignout();
+  }
+
   render() {
     return (
       <div>
         <button onClick={this.showMenu}>
-          Show menu
+          <img src={usersvg} className="user-profile-svg" alt="profile" />
         </button>
 
         {
@@ -47,8 +53,8 @@ class CustomDropDown extends Component {
                   this.dropdownMenu = element;
                 }}
               >
-                <button> Menu item 1 </button>
-                <button> Menu item 2 </button>
+                <Link> <button> Account</button></Link>
+                <button onClick={this.handleSignout}> Signout </button>
                 <button> Menu item 3 </button>
               </div>
             )
@@ -61,4 +67,4 @@ class CustomDropDown extends Component {
   }
 }
 
-export default CustomDropDown;
+export default CustomDropdown;

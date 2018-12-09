@@ -7,6 +7,9 @@ import {getAllMovies} from "../actions/MoviesActions";
 import {bindActionCreators} from "redux";
 import {doSignin} from "../actions/LoginActions";
 import {LOGO} from "../constants";
+import usersvg from "../img/user-solid.svg"
+import Dropdown from 'react-dropdown'
+import 'react-dropdown/style.css'
 /////////////////
 /// COMPONENTS //
 /////////////////
@@ -73,13 +76,22 @@ const Navigation = createReactClass({
   }
 });
 
+const options = [
+  'Account', 'SignOut'
+];
 var UserProfile = createReactClass({
   render: function() {
     return (
       <div className="UserProfile">
         <div className="User">
           <div className="name">Jack Oliver</div>
-          <div className="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/profile/profile-512_1.jpg" alt="profile" /></div>
+
+          <div className="image">   <img src={usersvg} className="user-profile-svg" alt="profile" /></div>
+
+          <Dropdown options={options} onChange={this._onSelect}
+            >
+
+          </Dropdown>
         </div>
       </div>
     );
