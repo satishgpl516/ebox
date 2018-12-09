@@ -61,7 +61,7 @@ class Signup extends Component {
                   <Field name="email" type="text" id="Username" className ="signin-text" placeholder ="Email Address" component={this.renderField}/>
                   <Field name="password" type="password" className=  "signin-text" placeholder = "password" maxLength="40" id="PasswordBox"
                          component={this.renderField}/>
-                  <Field name="password" type="password" className=  "signin-text" placeholder = "confirm password" maxLength="40" id="PasswordBox"
+                  <Field name="confirm" type="password" className=  "signin-text" placeholder = "confirm password" maxLength="40" id="confirmBox"
                          component={this.renderField}/>
                   <button type="submit" disabled={pristine || submitting} className="submit btn mt-2"
                           alternatetext="Sign In">Sign Up

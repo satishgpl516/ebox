@@ -4,12 +4,11 @@ import {connect} from "react-redux";
 import Logo from './Logo.js';
 import '../css/dashboard.css';
 import {getAllMovies} from "../actions/MoviesActions";
+import {doSignout} from "../actions/LoginActions"
 import {bindActionCreators} from "redux";
 import {doSignin} from "../actions/LoginActions";
 import {LOGO} from "../constants";
 import usersvg from "../img/user-solid.svg"
-import Dropdown from 'react-dropdown'
-import 'react-dropdown/style.css'
 /////////////////
 /// COMPONENTS //
 /////////////////
@@ -34,6 +33,8 @@ var Dashboard = createReactClass({
     this.setState({searchTerm : e.target.value});
   },
   render: function() {
+    console.log('logging in dash');
+    console.log(this.props.user);
     return (
       <div>
         <header className="Header">
@@ -80,18 +81,15 @@ const options = [
   'Account', 'SignOut'
 ];
 var UserProfile = createReactClass({
+  handleSignout: function(){
+    this.props.doSignout();
+  },
   render: function() {
+    console.log(this.props.user);
     return (
       <div className="UserProfile">
         <div className="User">
-          <div className="name">Jack Oliver</div>
-
-          <div className="image">   <img src={usersvg} className="user-profile-svg" alt="profile" /></div>
-
-          <Dropdown options={options} onChange={this._onSelect}
-            >
-
-          </Dropdown>
+          <button className="name" onClick={this.handleSignout}> Signout </button>
         </div>
       </div>
     );
@@ -247,14 +245,15 @@ var ListToggle = createReactClass({
 
 function mapStateToProps(state){
   return{
-    movies: state.moviesList
+    movies: state.moviesList,
+    user: state.user.data
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     ...bindActionCreators({
-      getAllMovies
+      getAllMovies, doSignout
     }, dispatch)
   }
 }
