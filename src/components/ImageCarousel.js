@@ -9,7 +9,7 @@ class ImageCarousel extends Component {
             <div className="tile__media">
               <img className="tile__img" src={this.props.backdrop} alt=""/>
             </div>
-            <div className="tile__details">
+            <div className="">
               <div className="tile__title">
                 {this.props.title}
               </div>

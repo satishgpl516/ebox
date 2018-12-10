@@ -55,6 +55,22 @@ export const doSignout= () => (dispatch) => {
   // console.log("FETCH NEW AGENCY DATA _ Y: ", year);
   console.log('Surya info');
   app.auth().signOut().then(() =>{
+    history.push("/signin");
     dispatch({type: USER.SIGN_OUT_SUCCESS});
   });
 };
+
+export const fetchUser = () => (dispatch) => {
+  dispatch({type: USER.SIGN_IN});
+  // console.log("FETCH NEW AGENCY DATA _ Y: ", year);
+  console.log('Surya info');
+  let userVal = app.auth().currentUser;
+  if(!userVal){
+    app.auth().onAuthStateChanged(function (user) {
+      userVal = user;
+      console.log(userVal);
+      dispatch({type: USER.GET_CUURENT_USER_SUCCESS, payload:userVal});
+    });
+    return userVal;
+  }
+  };

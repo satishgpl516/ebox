@@ -44,9 +44,6 @@ class Login extends Component {
   }
 
   render() {
-
-    console.log(this.props.error)
-
     const {handleSubmit, load, pristine, reset, submitting} = this.props;
     return (
       <Header>
@@ -99,7 +96,7 @@ function validate(values) {
 
 
 function mapStateToProps(state) {
-  // return ({error: state.user.message})
+  return ({error: state.user})
 }
 
 

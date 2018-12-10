@@ -10,7 +10,6 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Login/Signup";
 import AdminSignin from "./components/Admin/AdminSignin";
 import AdminSignUp from "./components/Admin/AdminSignUp";
-
 export const history = createBrowserHistory();
 
 class App extends Component {
@@ -24,7 +23,7 @@ class App extends Component {
             <Route exact path="/signup" component={Signup}/>
             <Route exact path="/adminSignin" component={AdminSignin}/>
             <Route exact path="/adminSignup" component={AdminSignUp}/>
-            <Route path="/" component={Dashboard}/>
+            <PrivateRoute path="/" component={Dashboard}/>
             <PrivateRoute/>
           </Switch>
         </Router>

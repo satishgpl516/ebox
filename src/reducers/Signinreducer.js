@@ -23,7 +23,8 @@ export const signupReducer = (state = {}, action) => {
 };
 
 export const signinReducer = (state = {
-  isLogged: false
+  isFetching : true,
+  isLoggedIn: false
 }, action) => {
   switch (action.type) {
     case USER.SIGN_IN:
@@ -54,8 +55,15 @@ export const signinReducer = (state = {
     return {
       isFetching: false,
       isLoggedIn: false,
-      data: state // action.payload.data.d.results[0]
+      data: null // action.payload.data.d.results[0]
     };
+    case USER.GET_CUURENT_USER_SUCCESS:
+      return { ...state,
+        isFetching: false,
+        isLoggedIn: true,
+        data: action.payload // action.payload.data.d.results[0]
+      };
+
     default:
       return state;
   }
