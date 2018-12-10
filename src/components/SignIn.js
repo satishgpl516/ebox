@@ -5,12 +5,11 @@ import {Field, reduxForm} from "redux-form";
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
-import netflixlogo from "./Landing/img/logo.svg";
 import {LOGO} from "../constants";
-import {doSignin} from "../actions/LoginActions";
+import {doSignin} from "../actions/SigninActions";
 import '../css/Login.css'
 
-class Login extends Component {
+class Signin extends Component {
   renderField(field) {
     const {input, meta: {touched, error}} = field;
     const cname = `form-group ${touched && error ? 'has-danger' : ''} `;
@@ -44,9 +43,10 @@ class Login extends Component {
   }
 
   render() {
-
-    console.log(this.props.error)
-
+    if(this.props.error){
+      console.log(this.props.error)
+    }
+    
     const {handleSubmit, load, pristine, reset, submitting} = this.props;
     return (
       <Header>
@@ -69,7 +69,7 @@ class Login extends Component {
               <div className="login-signup-now">New to Ebox? <Link to="/signup">Sign up now</Link>.
               </div>
             </div>
-          </div>f
+          </div>
         </NavLogo>
       </Header>
     )
@@ -115,4 +115,4 @@ function mapDispatchToProps(dispatch) {
 export default reduxForm({
   validate,
   form: 'loginForm'
-})(connect(mapStateToProps, mapDispatchToProps)(Login));
+})(connect(mapStateToProps, mapDispatchToProps)(Signin));

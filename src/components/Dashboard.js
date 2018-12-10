@@ -5,8 +5,11 @@ import Logo from './Logo.js';
 import '../css/dashboard.css';
 import {getAllMovies} from "../actions/MoviesActions";
 import {bindActionCreators} from "redux";
-import {doSignin} from "../actions/LoginActions";
 import {LOGO} from "../constants";
+import app from "../components/Firebase";
+import {doSignin} from "../actions/SigninActions";
+
+
 /////////////////
 /// COMPONENTS //
 /////////////////
@@ -32,7 +35,7 @@ var Dashboard = createReactClass({
   },
   render: function() {
     console.log('logging in dash');
-    console.log(this.props.user);
+    // console.log(this.props.user);
     return (
       <div>
         <header className="Header">
@@ -99,7 +102,7 @@ var Hero = createReactClass({
         <div className="content">
           <img className="logo" src="http://www.returndates.com/backgrounds/narcos.logo.png" alt="narcos background" />
           <h2>Season 2 now available</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque id quam sapiente unde voluptatum alias vero debitis, magnam quis quod.</p>
+          <p>Movie Box chronicles the rise of the cocaine trade in Colombia and the gripping real-life stories of drug kingpins of the late '80s in this raw, gritty original series. Also detailed are the actions taken by law enforcement as they battle in the war on drugs, targeting notorious and powerful figures that include drug lord Pablo Escobar. As efforts are made to control cocaine, one of the world's most valuable commodities, the many entities involved -- legal, political, police, military and civilian -- find themselves in conflict.</p>
           <div className="button-wrapper">
             <HeroButton primary={true} text="Watch now" />
             <HeroButton primary={false} text="+ My list" />
@@ -249,5 +252,4 @@ function mapDispatchToProps(dispatch) {
     }, dispatch)
   }
 }
-
 export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);

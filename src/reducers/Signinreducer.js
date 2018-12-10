@@ -32,7 +32,7 @@ export const signinReducer = (state = {}, action) => {
     case USER.SIGN_IN_SUCCESS:
       return { ...state,
         isFetching: false,
-        data: action.payload // action.payload.data.d.results[0]
+        data: action.payload,
       };
     case USER.SIGN_IN_FAIL:
       return { ...state,

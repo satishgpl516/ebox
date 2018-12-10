@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import {Route, Router, Redirect, Switch} from "react-router-dom";
+import {Route, Router, Switch} from "react-router-dom";
 import createBrowserHistory from 'history/createBrowserHistory';
 import PrivateRoute from './components/PrivateRoute';
-import Landing  from './components/Landing/Landing';
-import logo from './logo.svg';
 import './App.css';
-import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
+import SignIn from "./components/SignIn";
 import Signup from "./components/Signup";
-import AdminSignin from "./components/Admin/AdminSignin";
-import AdminSignUp from "./components/Admin/AdminSignUp";
+import Dashboard from './components/Dashboard';
 
 export const history = createBrowserHistory();
 
@@ -19,12 +15,10 @@ class App extends Component {
       <div className="App">
         <Router history = {history}>
           <Switch>
-            <Route exact path="/login" component={Landing}/>
-            <Route exact path="/signin" component={Login}/>
+            <Route exact path="/signin" component={SignIn}/>
             <Route exact path="/signup" component={Signup}/>
-            <Route exact path="/adminSignin" component={AdminSignin}/>
-            <Route exact path="/adminSignup" component={AdminSignUp}/>
-            <Route path="/" component={Dashboard}/>
+            <Route exact path="/dashboard" component={Dashboard}/>
+            <Route path="/" component={SignIn}/>
             <PrivateRoute/>
           </Switch>
         </Router>
