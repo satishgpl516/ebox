@@ -1,15 +1,16 @@
 import React,{Component} from 'react';
 import createReactClass from 'create-react-class';
 import {connect} from "react-redux";
-import Logo from './Logo.js';
+import Logo from './Login/Logo.js';
 import '../css/dashboard.css';
 import {getAllMovies} from "../actions/MoviesActions";
+import {doSignout} from "../actions/LoginActions"
 import {bindActionCreators} from "redux";
 import {LOGO} from "../constants";
-import app from "../components/Firebase";
-import {doSignin} from "../actions/SigninActions";
-
-
+import usersvg from "../img/user-solid.svg"
+import ImageCarousel from "./ImageCarousel";
+import '../css/ImageCarousel.css';
+import UserProfile from "./UserProfile";
 /////////////////
 /// COMPONENTS //
 /////////////////
@@ -34,8 +35,8 @@ var Dashboard = createReactClass({
     this.setState({searchTerm : e.target.value});
   },
   render: function() {
-    console.log('logging in dash');
-    // console.log(this.props.user);
+    // console.log('logging in dash');
+    console.log(this.props.user);
     return (
       <div>
         <header className="Header">
@@ -45,7 +46,7 @@ var Dashboard = createReactClass({
           <div id="search" className="Search">
             <input onKeyUp={this.handleKeyUp} onChange={this.handleChange} type="search" placeholder="Search for a title..." value={this.state.searchTerm}/>
           </div>
-          <UserProfile />
+         <UserProfile/>
         </header>
         <Hero />
         <TitleList title="Search Results" url={this.state.searchUrl} />
@@ -61,7 +62,7 @@ var Dashboard = createReactClass({
 
 
 // Navigation
-const Navigation = createReactClass({
+export const Navigation = createReactClass({
   render() {
     return (
       <div id="navigation" className="Navigation">
@@ -78,18 +79,6 @@ const Navigation = createReactClass({
   }
 });
 
-var UserProfile = createReactClass({
-  render: function() {
-    return (
-      <div className="UserProfile">
-        <div className="User">
-          <div className="name">Jack Oliver</div>
-          <div className="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/profile/profile-512_1.jpg" alt="profile" /></div>
-        </div>
-      </div>
-    );
-  }
-});
 
 //////////
 // Hero //
@@ -129,7 +118,7 @@ var HeroButton = createReactClass({
 
 // Title List Container
 
-var TitleList = createReactClass({
+export var TitleList = createReactClass({
 
   apiKey: '87dfa1c669eea853da609d4968d294be',
   getInitialState: function() {
@@ -160,11 +149,12 @@ var TitleList = createReactClass({
     }
 
   },
+
   render: function() {
     var titles ='';
     if(this.state.data.results) {
       titles = this.state.data.results.map(function(title, i) {
-        if(i < 5) {
+        if(i < 10) {
           var name = '';
           var backDrop = 'http://image.tmdb.org/t/p/original' + title.backdrop_path;
           if(!title.name) {
@@ -174,7 +164,7 @@ var TitleList = createReactClass({
           }
 
           return (
-            <Item key={title.id} title={name} score={title.vote_average} overview={title.overview} backdrop={backDrop} />
+            <ImageCarousel key={title.id} title={name} score={title.vote_average} overview={title.overview} backdrop={backDrop}/>
           );
 
         }else{
@@ -189,7 +179,11 @@ var TitleList = createReactClass({
         <div className="Title">
           <h1>{this.props.title}</h1>
           <div className="titles-wrapper">
-            {titles}
+              <div className="row" id="movie-scroll-bar">
+                <div className="row__inner">
+                   {titles}
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -197,6 +191,13 @@ var TitleList = createReactClass({
   }
 });
 
+const Arrow = ({ direction, clickFunction, glyph }) => (
+  <div
+    className={ `slide-arrow ${direction}` }
+    onClick={ clickFunction }>
+    { glyph }
+  </div>
+);
 // Title List Item
 var Item = createReactClass({
   render: function() {
@@ -241,7 +242,7 @@ var ListToggle = createReactClass({
 function mapStateToProps(state){
   return{
     movies: state.moviesList,
-    user: state.user.data
+    user: state.user
   }
 }
 

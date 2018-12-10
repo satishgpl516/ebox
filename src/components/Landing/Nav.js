@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import {LOGO} from '../../constants'
+import {LOGO} from "../../constants";
 import netflixlogo from './img/logo.svg';
 
 export const NavLogo = styled.nav`
@@ -9,8 +9,8 @@ export const NavLogo = styled.nav`
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     /* Netflix logo */
     img {
-        width: 167px;
-        height : 45px;
+        width: 350px;
+        height : 65px;
         vertical-align: middle;
     }
     .logo {
@@ -49,7 +49,8 @@ const nav = () => {
   return (
     <NavLogo   >
       <a href={"/"} className="logo">
-        <img src={LOGO} width={'450px'} height={'100px'} alt="Netflix Logo"/>
+        {/*<img src={netflixlogo} alt="Netflix Logo" />*/}
+        <img src={LOGO} width={'30px'} height={'60px'} alt="Netflix Logo" />
       </a>
       <Button right><Link to='/signin'>Sign In</Link></Button>
       <Button right><Link to='/adminSignin'>Admin</Link></Button>

@@ -207,6 +207,7 @@ p {
     border: 3px solid transparent;
     -webkit-transition: border .125s ease;
     transition: border .125s ease;
+    background-color: white;
 }
 .UserProfile .User .image img {
     width: 100%;
@@ -224,7 +225,16 @@ p {
     font-size: 18px;
     font-weight: 300;
     height: 44px;
+    background-color: #221f1f;
+    color: white;
+    border-radius: 5px;
+    border: none;
 }
+
+.UserProfile .User.name:hover {
+    background: #e50914;
+}
+
 .UserProfile .User:hover {
     cursor: pointer;
 }
@@ -328,7 +338,7 @@ p {
 }
 
 .TitleList {
-    padding: 20px 40px;
+    padding: 0px;
     box-sizing: border-box;
     -webkit-transition: opacity 3s ease;
     transition: opacity 3s ease;
@@ -344,7 +354,7 @@ p {
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin: 20px 0;
+    margin: -30px 0;
     width: calc(100vw - 80px);
     box-sizing: border-box;
     -webkit-box-pack: justify;
@@ -492,4 +502,7 @@ p {
     justify-content: center;
     height: 32px;
     width: 32px;
+}
+.user-profile-svg{
+    background-color: white;
 }

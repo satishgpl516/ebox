@@ -21,7 +21,7 @@ export const doSignin = (values) => (dispatch) => {
       console.log(`User signed in email: ${user.email}`);
       console.log(user);
       history.push("/dashboard");
-      dispatch({type: USER.SIGN_IN_SUCCESS, payload:user})  
+      dispatch({type: USER.SIGN_IN_SUCCESS, payload:user})
     }
   }).catch((error) =>{
     alert(`Please signup your email: ${values.email} for singup to ebox`);
@@ -56,3 +56,27 @@ export const doSignup= (values) => (dispatch) => {
     });
 };
 
+export const doSignout= () => (dispatch) => {
+  dispatch({type: USER.SIGN_OUT});
+  // console.log("FETCH NEW AGENCY DATA _ Y: ", year);
+  console.log('Surya info');
+  app.auth().signOut().then(() =>{
+    history.push("/signin");
+    dispatch({type: USER.SIGN_OUT_SUCCESS});
+  });
+};
+
+export const fetchUser = () => (dispatch) => {
+  dispatch({type: USER.SIGN_IN});
+  // console.log("FETCH NEW AGENCY DATA _ Y: ", year);
+  console.log('Surya info');
+  let userVal = app.auth().currentUser;
+  if(!userVal){
+    app.auth().onAuthStateChanged(function (user) {
+      userVal = user;
+      console.log(userVal);
+      dispatch({type: USER.GET_CUURENT_USER_SUCCESS, payload:userVal});
+    });
+    return userVal;
+  }
+  };

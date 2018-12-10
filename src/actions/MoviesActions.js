@@ -11,7 +11,7 @@ export const getAllMovies = () => (dispatch) => {
   return axios.get(`${ROOT_URL}/movies/all`, apiHeader)
     .then(response => response.json())
     .catch(error => {
-      console.log("fetchSpendAgency Error", error);
+      console.log("Get Movies Error", error);
       dispatch({type: MOVIE.GET_MOVIES_FAIL, error});
     })
     .then(json => {
