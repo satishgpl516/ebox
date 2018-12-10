@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {onComponentDidMount} from 'react-redux-lifecycle';
 import {connect} from "react-redux";
-import {USER} from "../actions/USER";
 import {fetchUser} from "../actions/SigninActions";
 import Dashboard from "./Dashboard";
 import app from "./Firebase";
