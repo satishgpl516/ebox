@@ -5,17 +5,9 @@ import {Link} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
-<<<<<<< HEAD:src/components/Signup.js
-import netflixlogo from "./Landing/img/logo.svg";
-import {LOGO} from "../constants";
-import {doSignup} from "../actions/SigninActions";
-import '../css/Login.css'
-=======
-import netflixlogo from "../Landing/img/logo.svg";
 import {LOGO} from "../../constants";
-import {doSignup} from "../../actions/LoginActions";
+import {doSignup} from "../../actions/SigninActions";
 import '../../css/Login.css'
->>>>>>> 8b28ce12fcacb446f33a5029f0be6454fe547cfa:src/components/Login/Signup.js
 
 class Signup extends Component {
   renderField(field) {

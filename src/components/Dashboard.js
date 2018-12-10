@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import Logo from './Login/Logo.js';
 import '../css/dashboard.css';
 import {getAllMovies} from "../actions/MoviesActions";
-import {doSignout} from "../actions/LoginActions"
+import {doSignout} from "../actions/SigninActions"
 import {bindActionCreators} from "redux";
 import {LOGO} from "../constants";
 import usersvg from "../img/user-solid.svg"

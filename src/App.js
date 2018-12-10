@@ -3,8 +3,8 @@ import {Route, Router, Switch} from "react-router-dom";
 import createBrowserHistory from 'history/createBrowserHistory';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
-import SignIn from "./components/SignIn";
-import Signup from "./components/Signup";
+import SignIn from "./components/Login/SignIn";
+import Signup from "./components/Login/Signup";
 import Dashboard from './components/Dashboard';
 
 export const history = createBrowserHistory();

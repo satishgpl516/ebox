@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import netflixlogo from "../Landing/img/logo.svg";
 import {LOGO} from "../../constants";
-import {doSignin} from "../../actions/LoginActions";
+import {doSignin} from "../../actions/SigninActions";
 import '../../css/Login.css'
 
 class Login extends Component {
