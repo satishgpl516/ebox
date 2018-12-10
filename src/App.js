@@ -6,8 +6,8 @@ import Landing  from './components/Landing/Landing';
 import logo from './logo.svg';
 import './App.css';
 import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import Login from "./components/Login/Login";
+import Signup from "./components/Login/Signup";
 import AdminSignin from "./components/Admin/AdminSignin";
 import AdminSignUp from "./components/Admin/AdminSignUp";
 

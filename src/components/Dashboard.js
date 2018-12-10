@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import createReactClass from 'create-react-class';
 import {connect} from "react-redux";
-import Logo from './Logo.js';
+import Logo from './Login/Logo.js';
 import '../css/dashboard.css';
 import {getAllMovies} from "../actions/MoviesActions";
 import {doSignout} from "../actions/LoginActions"
@@ -9,6 +9,9 @@ import {bindActionCreators} from "redux";
 import {doSignin} from "../actions/LoginActions";
 import {LOGO} from "../constants";
 import usersvg from "../img/user-solid.svg"
+import ImageCarousel from "./ImageCarousel";
+import '../css/ImageCarousel.css';
+import UserProfile from "./UserProfile";
 /////////////////
 /// COMPONENTS //
 /////////////////
@@ -44,7 +47,7 @@ var Dashboard = createReactClass({
           <div id="search" className="Search">
             <input onKeyUp={this.handleKeyUp} onChange={this.handleChange} type="search" placeholder="Search for a title..." value={this.state.searchTerm}/>
           </div>
-          <UserProfile />
+         <UserProfile/>
         </header>
         <Hero />
         <TitleList title="Search Results" url={this.state.searchUrl} />
@@ -60,7 +63,7 @@ var Dashboard = createReactClass({
 
 
 // Navigation
-const Navigation = createReactClass({
+export const Navigation = createReactClass({
   render() {
     return (
       <div id="navigation" className="Navigation">
@@ -77,24 +80,6 @@ const Navigation = createReactClass({
   }
 });
 
-const options = [
-  'Account', 'SignOut'
-];
-var UserProfile = createReactClass({
-  handleSignout: function(){
-    this.props.doSignout();
-  },
-  render: function() {
-    console.log(this.props.user);
-    return (
-      <div className="UserProfile">
-        <div className="User">
-          <button className="name" onClick={this.handleSignout}> Signout </button>
-        </div>
-      </div>
-    );
-  }
-});
 
 //////////
 // Hero //
@@ -134,7 +119,7 @@ var HeroButton = createReactClass({
 
 // Title List Container
 
-var TitleList = createReactClass({
+export var TitleList = createReactClass({
 
   apiKey: '87dfa1c669eea853da609d4968d294be',
   getInitialState: function() {
@@ -165,11 +150,12 @@ var TitleList = createReactClass({
     }
 
   },
+
   render: function() {
     var titles ='';
     if(this.state.data.results) {
       titles = this.state.data.results.map(function(title, i) {
-        if(i < 5) {
+        if(i < 10) {
           var name = '';
           var backDrop = 'http://image.tmdb.org/t/p/original' + title.backdrop_path;
           if(!title.name) {
@@ -179,7 +165,7 @@ var TitleList = createReactClass({
           }
 
           return (
-            <Item key={title.id} title={name} score={title.vote_average} overview={title.overview} backdrop={backDrop} />
+            <ImageCarousel key={title.id} title={name} score={title.vote_average} overview={title.overview} backdrop={backDrop}/>
           );
 
         }else{
@@ -194,7 +180,11 @@ var TitleList = createReactClass({
         <div className="Title">
           <h1>{this.props.title}</h1>
           <div className="titles-wrapper">
-            {titles}
+              <div className="row" id="movie-scroll-bar">
+                <div className="row__inner">
+                   {titles}
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -202,6 +192,13 @@ var TitleList = createReactClass({
   }
 });
 
+const Arrow = ({ direction, clickFunction, glyph }) => (
+  <div
+    className={ `slide-arrow ${direction}` }
+    onClick={ clickFunction }>
+    { glyph }
+  </div>
+);
 // Title List Item
 var Item = createReactClass({
   render: function() {
@@ -253,7 +250,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch) {
   return {
     ...bindActionCreators({
-      getAllMovies, doSignout
+      getAllMovies
     }, dispatch)
   }
 }

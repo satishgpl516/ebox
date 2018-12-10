@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import {Header} from "./Landing/LandingHeader";
-import {NavLogo} from "./Landing/Nav";
+import {Header} from "../Landing/LandingHeader";
+import {NavLogo} from "../Landing/Nav";
 import {Field, reduxForm} from "redux-form";
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
-import netflixlogo from "./Landing/img/logo.svg";
-import {LOGO} from "../constants";
-import {doSignin} from "../actions/LoginActions";
-import '../css/Login.css'
+import netflixlogo from "../Landing/img/logo.svg";
+import {LOGO} from "../../constants";
+import {doSignin} from "../../actions/LoginActions";
+import '../../css/Login.css'
 
 class Login extends Component {
   renderField(field) {

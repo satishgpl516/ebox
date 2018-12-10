@@ -19,7 +19,7 @@ export const doSignin = (values) => (dispatch) => {
     else if(user && user.emailVerified){
       console.log(`User signed in email: ${values.email}`);
       history.push("/dashboard");
-      dispatch({type: USER.SIGN_IN_SUCCESS, payload:user})  
+      dispatch({type: USER.SIGN_IN_SUCCESS, payload:user})
     }
   }).catch((error) =>{
     alert(`Please signup your email: ${values.email} for singup to ebox`);
@@ -53,14 +53,8 @@ export const doSignup= (values) => (dispatch) => {
 export const doSignout= () => (dispatch) => {
   dispatch({type: USER.SIGN_OUT});
   // console.log("FETCH NEW AGENCY DATA _ Y: ", year);
-  return axios.post(`http://localhost:8080`, apiHeader)
-    .then(response => response.json())
-    .catch(error => {
-      console.log("fetchSpendAgency Error", error);
-      dispatch({type: USER.SIGN_OUT_FAIL, error});
-    })
-    .then(json => {
-      history.push('/dashboard');
-      dispatch({type: USER.SIGN_OUT_SUCCESS, json})
-    });
+  console.log('Surya info');
+  app.auth().signOut().then(() =>{
+    dispatch({type: USER.SIGN_OUT_SUCCESS});
+  });
 };
