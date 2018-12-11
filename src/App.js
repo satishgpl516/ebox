@@ -6,6 +6,7 @@ import './App.css';
 import Signin from "./components/Login/Signin";
 import Signup from "./components/Login/Signup";
 import Dashboard from './components/Dashboard';
+import MovieAdd from './components/Movie/MovieAdd';
 
 export const history = createBrowserHistory();
 
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path="/signin" component={Signin}/>
             <Route exact path="/signup" component={Signup}/>
             <Route exact path="/dashboard" component={Dashboard}/>
+            <Route exact path="/movieadd" component={MovieAdd}/>
             <Route path="/" component={Signin}/>
             <PrivateRoute/>
           </Switch>

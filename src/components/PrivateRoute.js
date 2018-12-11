@@ -12,22 +12,9 @@ class PrivateRoute extends Component {
   }
 
   componentDidMount() {
-    //   console.log("here")
       this.props.fetchUser()
-
     }
-
-    // getCurrentUser(){
-    // let userVal = app.auth().currentUser;
-    //   app.auth().onAuthStateChanged(function (user) {
-    //     userVal = user;
-    //     console.log(userVal);
-    //   });
-    //   return userVal;
-    // }
-
     render(){
-    // console.log(this.getCurrentUser());
     const{component: Component, ...props } = this.props;
       console.log(this.props.user);
       if(this.props.user.isFetching){

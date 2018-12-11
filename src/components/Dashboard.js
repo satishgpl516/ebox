@@ -35,8 +35,9 @@ var Dashboard = createReactClass({
     this.setState({searchTerm : e.target.value});
   },
   render: function() {
-    // console.log('logging in dash');
-    console.log(this.props.user);
+    console.log('logging in dash');
+    console.log(this.props.user.data);
+    // console.log(this.props.user.data.email.includes('@sjsu.edu'));
     return (
       <div>
         <header className="Header">
@@ -50,11 +51,11 @@ var Dashboard = createReactClass({
         </header>
         <Hero />
         <TitleList title="Search Results" url={this.state.searchUrl} />
-        <TitleList title="Top TV picks for Jack" url='discover/tv?sort_by=popularity.desc&page=1' />
+        <TitleList title="Top picks for You" url='discover/tv?sort_by=popularity.desc&page=1' />
         <TitleList title="Trending now" url='discover/movie?sort_by=popularity.desc&page=1' />
-        <TitleList title="Most watched in Horror" url='genre/27/movies?sort_by=popularity.desc&page=1' />
-        <TitleList title="Sci-Fi greats" url='genre/878/movies?sort_by=popularity.desc&page=1' />
-        <TitleList title="Comedy magic" url='genre/35/movies?sort_by=popularity.desc&page=1' />
+        <TitleList title="Most watched" url='genre/27/movies?sort_by=popularity.desc&page=1' />
+        {/* <TitleList title="Sci-Fi greats" url='genre/878/movies?sort_by=popularity.desc&page=1' /> */}
+        {/* <TitleList title="Comedy magic" url='genre/35/movies?sort_by=popularity.desc&page=1' /> */}
       </div>
     );
   }
@@ -65,13 +66,13 @@ var Dashboard = createReactClass({
 export const Navigation = createReactClass({
   render() {
     return (
+
       <div id="navigation" className="Navigation">
         <nav>
           <ul>
-            <li>Browse</li>
-            <li>My list</li>
-            <li>Top picks</li>
-            <li>Recent</li>
+            <li><a href="/movieadd">Add Movie</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Reports</a></li>
           </ul>
         </nav>
       </div>

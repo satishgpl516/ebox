@@ -17,7 +17,9 @@ class UserProfile extends Component{
     return (
       <div className="UserProfile">
         <div className="User">
-          <button className="name" onClick={this.handleSignout}> Signout </button>
+          <ul>
+              <li onClick={this.handleSignout}>Signout</li>
+          </ul>
         </div>
       </div>
     );

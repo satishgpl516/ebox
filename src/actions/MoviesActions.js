@@ -27,7 +27,7 @@ export const addMovie = (values) => (dispatch) => {
     .then(response => response.json())
     .catch(error => {
       console.log("fetchSpendAgency Error", error);
-      dispatch({type: MOVIE.ADD_MOVIE, error});
+      dispatch({type: MOVIE.ADD_MOVIE_FAIL, error});
     })
     .then(json => {
       history.push('/dashboard');
@@ -43,7 +43,7 @@ export const deleteMovie = (values) => (dispatch) => {
     .then(response => response.json())
     .catch(error => {
       console.log("fetchSpendAgency Error", error);
-      dispatch({type: MOVIE.DELETE_MOVIE, error});
+      dispatch({type: MOVIE.DELETE_MOVIE_FAIL, error});
     })
     .then(json => {
       history.push('/dashboard');
@@ -59,7 +59,7 @@ export const editMovie = (values) => (dispatch) => {
     .then(response => response.json())
     .catch(error => {
       console.log("fetchSpendAgency Error", error);
-      dispatch({type: MOVIE.EDIT_MOVIE, error});
+      dispatch({type: MOVIE.EDIT_MOVIE_FAIL, error});
     })
     .then(json => {
       history.push('/dashboard');

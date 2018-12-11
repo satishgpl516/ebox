@@ -28,9 +28,6 @@ export const doSignin = (values) => (dispatch) => {
   });  
 };
 
-app.auth().onAuthStateChanged(function(user) {
-    localStorage.setItem('user', JSON.stringify(user))
-});  
 
 export const doSignup= (values) => (dispatch) => {
   dispatch({type: USER.SIGN_UP});
@@ -58,7 +55,6 @@ export const doSignup= (values) => (dispatch) => {
 
 export const doSignout= () => (dispatch) => {
   dispatch({type: USER.SIGN_OUT});
-  // console.log("FETCH NEW AGENCY DATA _ Y: ", year);
   console.log('Surya info');
   app.auth().signOut().then(() =>{
     history.push("/signin");
@@ -68,8 +64,6 @@ export const doSignout= () => (dispatch) => {
 
 export const fetchUser = () => (dispatch) => {
   dispatch({type: USER.SIGN_IN});
-  // console.log("FETCH NEW AGENCY DATA _ Y: ", year);
-  console.log('Surya info');
   let userVal = app.auth().currentUser;
   if(!userVal){
     app.auth().onAuthStateChanged(function (user) {
@@ -80,3 +74,25 @@ export const fetchUser = () => (dispatch) => {
     return userVal;
   }
   };
+
+  export const doVerifySignUp = (values) => (dispatch) => {
+    dispatch({type: USER.SIGN_IN});
+    
+    // console.log("FETCH NEW AGENCY DATA _ Y: ", year);
+    app.auth().signInWithEmailAndPassword(values.email, values.password).then((user) =>{
+      var user = app.auth().currentUser;
+      if(user && user.emailVerified === false){
+        alert(`Please verify your email: ${user.email} for verification link`);
+        console.log(user);
+      }
+      else if(user && user.emailVerified){
+        console.log(`User signed in email: ${user.email}`);
+        console.log(user);
+        history.push("/dashboard");
+        dispatch({type: USER.SIGN_IN_SUCCESS, payload:user})
+      }
+    }).catch((error) =>{
+      alert(`Please signup your email: ${values.email} for singup to ebox`);
+    });  
+  };
+  
