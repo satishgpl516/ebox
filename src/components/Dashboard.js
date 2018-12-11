@@ -50,7 +50,7 @@ var Dashboard = createReactClass({
          <UserProfile/>
         </header>
         <Hero />
-        <TitleList title="Search Results" url={this.state.searchUrl} />
+        <TitleList title={`Search Results for "${this.state.searchTerm}"`} url={this.state.searchUrl} />
         <TitleList title="Top TV picks for Jack" url='discover/tv?sort_by=popularity.desc&page=1' />
         <TitleList title="Trending now" url='discover/movie?sort_by=popularity.desc&page=1' />
         <TitleList title="Most watched in Horror" url='genre/27/movies?sort_by=popularity.desc&page=1' />
@@ -178,7 +178,9 @@ export var TitleList = createReactClass({
     return (
       <div ref="titlecategory" className="TitleList" data-loaded={this.state.mounted}>
         <div className="Title">
+
           <h1>{this.props.title}</h1>
+          {/*Insert the Explore All Button here*/}
           <div className="titles-wrapper">
               <div className="row" id="movie-scroll-bar">
                 <div className="row__inner">
