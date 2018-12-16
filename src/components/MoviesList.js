@@ -29,8 +29,7 @@ class MoviesList extends Component{
     return(
       <div ref="titlecategory" className="TitleList" data-loaded={this.state.mounted}>
         <div className="Title">
-          <h1>{title}</h1>
-          <h2> Add a drop down for filter </h2>
+          <h1 style={{width:'1300px', textAlign:'center'}}>{title}</h1>
           <div className="titles-wrapper">
           {moviesList.map((item, idx) =>
             <MovieItem key={idx} movie={item}/>

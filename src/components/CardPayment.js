@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Card from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import "../css/CreditCards.css"
-import {payPerMovie} from "../actions/UserActions";
+import {payAmount,payUserSubscription} from "../actions/UserActions";
 import {formatCreditCardNumber, formatCVC, formatExpirationDate, formatFormData,} from './CardsUtil';
 
 class CardPayment extends React.Component {
@@ -55,17 +55,22 @@ class CardPayment extends React.Component {
 
     this.setState({ formData });
     let username = localStorage.getItem('user');
-    this.props.payPerMovie(username, this.props.price);
+    if(this.props.subscription === 'PAY_PER_VIEW_ONLY'){
+      this.props.payAmount(username, this.props.price, this.props.movieId, this.props.subscription, this.props.months);
+    }
+    if(this.props.subscription === 'SUBSCRIPTION_ONLY'){
+      this.props.payUserSubscription(username, this.props.price, this.props.movieId, this.props.subscription, this.props.months);
+    }
     this.form.reset();
   };
 
-  payMovie = (username,price) => {
-    this.props.payPerMovie(username,price);
+  payMovie = (username,price,subscription,months) => {
+    this.props.payAmount(username,price,subscription,months);
   };
 
   render() {
     const { name, number, expiry, cvc, focused, issuer, formData } = this.state;
-    const {price} = this.props;
+    const {price,movieId} = this.props;
     return (
       <div key="Payment" className="payment-div">
         <div className="App-payment">
@@ -145,4 +150,4 @@ class CardPayment extends React.Component {
   }
 }
 
-export default connect(null, {payPerMovie}) (CardPayment);
+export default connect(null, {payAmount,payUserSubscription}) (CardPayment);

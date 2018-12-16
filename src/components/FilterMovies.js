@@ -15,15 +15,7 @@ class FilterMovies extends Component {
       genre: null,
       mpaaRating: null
     };
-    this.handleKeyUp = this.handleKeyUp.bind(this);
     this.filterMovieData= this.filterMovieData.bind(this);
-  }
-
-  handleKeyUp(e) {
-    if (e.key === 'Enter' && this.state.searchTerm !== '') {
-      var searchUrl = "search/multi?query=" + this.state.searchTerm + "&api_key=" + this.apiKey;
-      this.setState({searchUrl: searchUrl});
-    }
   }
 
 
@@ -71,7 +63,7 @@ class FilterMovies extends Component {
 
   onSubmit(values) {
     console.log(values);
-    this.filterMovieData(values);
+    // this.filterMovieData(values);
   }
 
   render() {
@@ -154,8 +146,8 @@ function validate(values) {
       errors.year = "Enter a 4 digit value \n ";
     }
   }
-  if (!values.movieType) {
-    errors.movieType = "Please enter a movie type as paid or Free\n";
+  if (!values.availability) {
+    errors.availability = "Please enter a movie type as paid or Free\n";
   }
   return errors;
 }

@@ -4,7 +4,7 @@ import {USER} from "../constants";
 import {signinReducer,signupReducer} from './Signinreducer';
 import {movieReducer, movieDetailsReducer, movieOperationReducer,movieRatingsReducer} from "./MoviesReducer";
 import {moviePaymentReducer, payUserSubscriptionReducer} from "./PaymentsReducer";
-import {getUserSubscription, getUserPayPerViewMovies} from "../actions/UserActions";
+import {UserPaidMoviesReducer, getUserSubscription, setUserWatchLog} from "./UserReducer";
 
 const rootReducer = combineReducers({
   userSignup : signupReducer,
@@ -15,7 +15,8 @@ const rootReducer = combineReducers({
   movieReviews: movieRatingsReducer,
   moviePaymentStatus: moviePaymentReducer,
   userSubscription: getUserSubscription,
-  userPaidMovies: getUserPayPerViewMovies,
+  userPaidMovies: UserPaidMoviesReducer,
+  setWatchLog: setUserWatchLog,
   subscriptionPaid: payUserSubscriptionReducer,
   form: formReducer
 });

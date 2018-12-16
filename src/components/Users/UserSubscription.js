@@ -4,19 +4,25 @@ import '../../css/BrowseMovies.css';
 import {Field, reduxForm} from "redux-form";
 import Header from "../Header";
 import CardPayment from "../CardPayment";
-import {payUserSubscription} from "../../actions/UserActions";
+import {payAmount} from "../../actions/UserActions";
 
 class UserSubscription extends Component{
   constructor(props){
     super(props);
     this.state = {
-      loading: true
-    }
+      loading: true,
+      months : 0
+    };
+    this.renderSelect = this.renderSelect.bind(this);
   }
   componentDidMount(){
   }
 
   renderSelect(field){
+    console.log("inside select", field.input.value);
+    if(this.state.months !== field.input.value){
+      this.setState({months:field.input.value});
+    }
     return(
       <div>
         <select {...field.input} {...field}/>
@@ -27,22 +33,22 @@ class UserSubscription extends Component{
 
   onSubmit(values) {
     console.log(values);
-    this.payUserSubscription(values);
   }
 
   render(){
 
-    console.log(this.props.movies);
-    const{handleSubmit, movies} = this.props;
+    const{handleSubmit} = this.props;
     return(
       <div>
+        <div style={{marginTop: "150px"}}>
+        <Header/>
         <form className="registration-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <div className='filter-group'>
+          <div className='filter-group' style={{marginLeft:"200px"}}>
             {/* Movie Theater Name */}
             <div className="form-itemgroup">
-              <label className="filterform-label">Mpaa Rating</label>
+              <label className="filterform-label">Select a Plan</label>
               <Field name="subscriptionPlan" component={this.renderSelect}
-                     className="filter-dropdown">
+                     className="filter-dropdown" >
                 <option></option>
                 <option value="1">One Month - $10</option>
                 <option value="6">Six Months - $60</option>
@@ -51,11 +57,9 @@ class UserSubscription extends Component{
             </div>
           </div>
         </form>
-        <Header/>
-        <div style={{marginTop: "150px"}}>
         </div>
-        <h1 style={{display:'block', fontSize:'25px', marginTop:'100px'}}> Payment</h1>
-        <CardPayment/>
+        {/*<h1 style={{display:'block', fontSize:'25px', marginTop:'100px'}}> Payment</h1>*/}
+        <CardPayment movieId= {1} months={this.state.months} price={this.state.months*10} subscription={"SUBSCRIPTION_ONLY"}/>
       </div>
     );
   }
@@ -77,4 +81,4 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'Filtermovies'})(connect(mapStateToProps,{payUserSubscription})(UserSubscription));
+  form: 'Filtermovies'})(connect(mapStateToProps,{payAmount})(UserSubscription));

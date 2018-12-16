@@ -105,3 +105,17 @@ export const saveReview = (values) => (dispatch) => {
       dispatch({type: MOVIE.ADD_MOVIE_SUCCESS, payload:json})
     });
 };
+
+export const getSearchResults = (searchTerm) => (dispatch) => {
+  dispatch({type: MOVIE.GET_SEARCH_RESULTS});
+  // console.log("FETCH NEW AGENCY DATA _ Y: ", year);
+  return axios.post(`${ROOT_URL}/eb/user/moviesearch?searchtext=${searchTerm}`,{}, apiHeader).then(response => {
+    console.log(response);
+    dispatch({type: MOVIE.GET_MOVIES_SUCCESS, payload: response});
+    history.push("/browsemovies");
+  })
+    .catch(error => {
+      console.log("Get Movies Error", error);
+      dispatch({type: MOVIE.GET_SEARCH_RESULTS_FAIL, error});
+    });
+};

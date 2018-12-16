@@ -88,13 +88,13 @@ class MovieAdd extends Component {
                                component={this.renderField}
                         />
                         <label className="form-label">Movie Type</label>
-                        <Field name="movieType" component={this.renderSelect}
+                        <Field name="availability" component={this.renderSelect}
                                className="signin-dropdown">
                           <option></option>
-                          <option value="paid">Paid</option>
-                          <option value="free">Free</option>
-                          <option value="subscriptionOnly">Subscription Only</option>
-                          <option value="payPerViewOnly">Pay Per View Only</option>
+                          <option value="PAID">Paid</option>
+                          <option value="FREE">Free</option>
+                          <option value="SUBSCRIPTION_ONLY">Subscription Only</option>
+                          <option value="PAY_PER_VIEW_ONLY">Pay Per View Only</option>
                         </Field>
 
                         <label className="form-label">Director</label>
@@ -222,8 +222,8 @@ function validate(values) {
     }
   }
 
-  if (!values.movieType) {
-    errors.movieType = "Please enter a movie type as paid or Free\n";
+  if (!values.availability) {
+    errors.availability = "Please enter a movie type as paid or Free\n";
   }
   if (!values.moviedirector) {
     errors.moviedirector = "Please enter a movie director\n";
@@ -232,10 +232,10 @@ function validate(values) {
   if (!values.actors) {
     errors.actors = 'Enter aleast one actor\n';
   }
-  if ((!values.price) && (values.movietype === 'free')) {
+  if ((!values.price) && (values.availability === 'free')) {
     values.price = 0
   }
-  if ((!values.price) && (values.movietype === 'paid')) {
+  if ((!values.price) && (values.availability === 'paid')) {
     errors.price = 'Enter a price for the movie'
   }
   if (!values.mpparating) {
@@ -285,7 +285,7 @@ function mapStateToProps(state) {
     initialValues:{
       title: (state.movieDetails.data && state.movieDetails.data.title) || " ",
       year:state.movieDetails.data && state.movieDetails.data.year ||" ",
-      movieType:state.movieDetails.data && state.movieDetails.data.movieType || '',
+      availability:state.movieDetails.data && state.movieDetails.data.availability || '',
       moviedirector:state.movieDetails.data && state.movieDetails.data.directorName || '',
       actors:state.movieDetails.data && state.movieDetails.data.actors || '',
       price:state.movieDetails.data && state.movieDetails.data.price || '',

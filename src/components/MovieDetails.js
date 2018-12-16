@@ -13,6 +13,7 @@ import MovieReview from "./MovieReview";
 import ReactStars from 'react-stars';
 import _ from "lodash";
 import moment from "moment";
+import {getUserPayPerViewMovies} from "../actions/UserActions";
 
 
 class MovieDetails extends Component{
@@ -27,18 +28,27 @@ class MovieDetails extends Component{
   async componentDidMount(){
     await this.props.getMovieDetails(this.state.movieId);
     let user = localStorage.getItem('user');
-    // await this.props.getUserPayPerViewMovies(user);
+    await this.props.getUserPayPerViewMovies(user);
   }
   checkUserisAdmin() {
     let user = localStorage.getItem('user');
     console.log("user email", user);
     return (user.includes('@sjsu.edu'));
   }
-  validatePlayOption(movieType, price){
-    // const{usersubscription, payperviews} = this.props
-    if(this.checkUserisAdmin() || movieType === 'free')
+  validatePlayOption(availablity, price, movieId){
+    const{paidMovies} = this.props;
+    console.log(paidMovies);
+    if(this.checkUserisAdmin() || availablity === 'FREE')
       return true;
-    else {
+    else if(paidMovies && paidMovies.length){
+      if(paidMovies.includes(movieId)){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    else{
       return false;
     }
   }
@@ -53,7 +63,7 @@ class MovieDetails extends Component{
   renderDetails(movieDetail){
     let movieClose = () => this.setState({ showMovie: false });
     let paymentClose = () => this.setState({ showPayment: false });
-    let playMovie = this.validatePlayOption(movieDetail.movieType, movieDetail.price);
+    let playMovie = this.validatePlayOption(movieDetail.availability, movieDetail.price, movieDetail.movieId);
     console.log(playMovie);
     return(
       <div className="movie-detail">
@@ -100,7 +110,7 @@ class MovieDetails extends Component{
         <Header/>
         <div style={{marginTop:'100px'}}>
           {  (movieDetail) ? this.renderDetails(movieDetail) : ''}
-          { (movieDetail) ? <MovieReview movie={movieDetail}/>: ''}
+          {/*{ (movieDetail) ? <MovieReview movie={movieDetail}/>: ''}*/}
         </div>
       </div>
     );
@@ -125,14 +135,16 @@ function validate(values) {
 
 function mapStateToProps(state){
   return{
-    movieDetail: state.movieReviews.data
+    movieDetail: state.movieDetails.data,
+    movieReview: state.movieReviews.data,
+    paidMovies : state.userPaidMovies.data
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     ...bindActionCreators({
-      getMovieDetails, deleteMovie
+      getMovieDetails, deleteMovie, getUserPayPerViewMovies
     }, dispatch)
   }
 }

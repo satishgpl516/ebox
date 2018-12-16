@@ -11,7 +11,7 @@ export const moviePaymentReducer = (state = {}, action) => {
       console.log("Hello", action);
       return { ...state,
         isFetching: false,
-        data: action.payload.data // action.payload.data.d.results[0]
+        data: action.payload // action.payload.data.d.results[0]
       };
     case PAYMENT.PAY_FOR_MOVIE_FAIL:
       return { ...state,
@@ -25,17 +25,17 @@ export const moviePaymentReducer = (state = {}, action) => {
 
 export const payUserSubscriptionReducer = (state = {}, action) => {
   switch (action.type) {
-    case PAYMENT.GET_USER_SUBSCRIPTION:
+    case PAYMENT.PAY_USER_SUBSCRIPTION:
       return { ...state,
         data: state,
         isFetching: true
       };
-    case PAYMENT.GET_USER_SUBSCRIPTION_SUCCESS:
+    case PAYMENT.PAY_USER_SUBSCRIPTION_SUCCESS:
       return { ...state,
         isFetching: false,
-        data: action.payload.data // action.payload.data.d.results[0]
+        data: action.payload // action.payload.data.d.results[0]
       };
-    case PAYMENT.GET_USER_SUBSCRIPTION_FAILURE:
+    case PAYMENT.PAY_USER_SUBSCRIPTION_FAILURE:
       return { ...state,
         isFetching: false,
         error: action.error

@@ -131,7 +131,7 @@ class MovieReview extends Component {
                       />
                     </div>
                     <small>
-                      // className="font-size-13 font-timesNewRoman color-ccc">{this.props.movie.movie.reviews ? this.props.movie.movie.reviews.length : ''} Voters
+                      {/*className="font-size-13 font-timesNewRoman color-ccc">{this.props.movie.movie.reviews ? this.props.movie.movie.reviews.length : ''} Voters*/}
                     </small>
                     <br/>
                     <span className="icon icon-rottom-fresh rotten-tomatoes__icon text-center"></span><br/>

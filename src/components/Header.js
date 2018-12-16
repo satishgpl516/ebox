@@ -7,6 +7,7 @@ import Navigation from "./Navigation";
 import UserProfile from "./UserProfile";
 import {Link} from "react-router-dom";
 import MoviesList from "./MoviesList";
+import {getSearchResults} from "../actions/MoviesActions";
 
 class Header extends Component{
   constructor(props){
@@ -15,11 +16,13 @@ class Header extends Component{
       searchTerm:"",
       searchUrl:""
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
   }
   handleKeyUp(e){
     if (e.key === 'Enter' && this.state.searchTerm !== '') {
-      var searchUrl = "search/multi?query=" + this.state.searchTerm + "&api_key=" + this.apiKey;
-      this.setState({searchUrl:searchUrl});
+      this.props.getSearchResults(this.state.searchTerm);
+
     }
   }
   handleChange(e){
@@ -42,4 +45,5 @@ class Header extends Component{
   }
 }
 
-export default Header;
+
+export default connect(null,{getSearchResults})(Header);
