@@ -1,56 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b25d48f-180b-4039-8e6a-b80337ce5a33" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/AdminRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/BrowseMovies.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CardPayment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CardsUtil.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FilterMovies.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ModalBox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Movie/MovieAdd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MovieReview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MoviesList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navigation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Users/Uers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Users/UserSubscription.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/BrowseMovies.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/CreditCards.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/MovieDetails.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/Movieadd.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/MovieModalReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/PaymentsReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/Admin Actions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/LoginActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/SigninActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/MoviesActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/MoviesActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/USER.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/Add Movies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/PaymentActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminSignUp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminSignin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Signin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/Edit Movies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/UserActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ImageCarousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MovieItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/Landing.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/LandingHeader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/Nav.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/img/bg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/img/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PrivateRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/MoviesReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/MoviesReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="3b25d48f-180b-4039-8e6a-b80337ce5a33" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -395,18 +346,17 @@
       <workItem from="1544355345827" duration="30206000" />
       <workItem from="1544478587398" duration="18877000" />
       <workItem from="1544600699914" duration="52532000" />
-      <workItem from="1544868299626" duration="33950000" />
+      <workItem from="1544868299626" duration="34442000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165061000" />
+    <option name="totallyTimeSpent" value="165553000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8834459" visible="true" weight="0.13321277" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8834459" visible="true" weight="0.13321277" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
@@ -415,7 +365,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.3635334" />
       <window_info id="npm" order="2" sideWeight="0.11655405" side_tool="true" weight="0.14737508" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.38164756" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.38164756" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
