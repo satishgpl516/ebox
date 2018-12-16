@@ -9,15 +9,12 @@ class FilterMovies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      year: null,
-      directors: null,
-      actors: null,
-      genre: null,
-      mpaaRating: null
+      value: null,
+
     };
     this.filterMovieData= this.filterMovieData.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-
 
   renderField(field){
     const {input, meta: {touched, error, disabled}} = field;
@@ -65,10 +62,14 @@ class FilterMovies extends Component {
     console.log(values);
     // this.filterMovieData(values);
   }
+  handleChange(event){
+    this.setState({value:event.target.value});
+  }
 
   render() {
     const {handleSubmit} = this.props;
     return (
+      <div>
       <div className="filter-movies">
         <form className="registration-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div className='filter-group'>
@@ -135,6 +136,7 @@ class FilterMovies extends Component {
           </div>
         </form>
       </div>
+      </div>
     );
   }
 }
@@ -162,4 +164,4 @@ function mapStateToProps(state){
 
 export default reduxForm({
   validate,
-  form: 'Filtermovies'})(connect(mapStateToProps,{getAllMovies, updateFilteredMovies})(FilterMovies));
+  form: 'filterMovies'})(connect(mapStateToProps,{getAllMovies, updateFilteredMovies})(FilterMovies));

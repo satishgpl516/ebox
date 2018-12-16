@@ -13,6 +13,7 @@ import test from "./components/test";
 import MovieDetails from "./components/MovieDetails";
 import CardPayment from "./components/CardPayment";
 import UserSubscription from "./components/Users/UserSubscription";
+import FilterMovies from "./components/FilterMovies";
 
 export const history = createBrowserHistory();
 
@@ -31,6 +32,7 @@ class App extends Component {
             } />
             <Route exact path="/browsemovies" component={BrowseMovies}/>
             <Route exact path="/subscription" component={UserSubscription}/>
+            <Route exact path="/filtermovies" component={FilterMovies}/>
             <Route exact path="/moviedetails/:movieId" render = {(props) => {
             return (
               <MovieDetails id={props.match.params.movieId}/>
