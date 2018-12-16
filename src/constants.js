@@ -1,5 +1,5 @@
 // export const ROOT_URL = "http://localhost:8080";
-export const ROOT_URL = 'http://35.175.226.76:8080/';
+export const ROOT_URL = "http://35.175.226.76:8080";
 export const LOGO = "https://fontmeme.com/permalink/181215/434dc4936cf31f05fe009a6a3d191b92.png";
 export const SIGN_IN_LOGO = "https://fontmeme.com/permalink/181209/d616c788fe2b61f1f05c8f0ddcef6c89.png";
 export const apiHeader = {

@@ -22,9 +22,9 @@ class Navigation extends Component{
         <div id="navigation" className="Navigation">
           <nav>
             <ul>
-              <li><a href="/addmovie">Add Movie</a></li>
-              <li><a href="#">Users</a></li>
-              <li><a href="#">Reports</a></li>
+              <li><a  style={navList} href="/addmovie">Add Movie</a></li>
+              <li><a  style={navList} href="#">Users</a></li>
+              <li><a   style={navList}href="#">Reports</a></li>
             </ul>
           </nav>
         </div>
