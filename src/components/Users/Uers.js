@@ -4,7 +4,7 @@ import {Field, reduxForm} from "redux-form";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import {LOGO} from "../../constants";
-import {doSignup} from "../../actions/SigninActions";
+import {addMovie} from "../../actions/MoviesActions";
 import '../../css/Login.css'
 import bgimg from '../../img/bg.jpg'
 import styled from 'styled-components';
@@ -37,7 +37,7 @@ export const NavLogo = styled.nav`
         margin: 0 0 0 3%;
     }
 `;
-class Signup extends Component {
+class MovieAdd extends Component {
   renderField(field) {
     const {input, meta: {touched, error}} = field;
     const cname = `form-group ${touched && error ? 'has-danger' : ''} `;
@@ -67,11 +67,14 @@ class Signup extends Component {
 
   onSubmit(values) {
     console.log(values);
-    this.props.doSignup(values);
+    this.props.addMovie(values);
   }
 
   render() {
-    const {handleSubmit, load, error, pristine, reset, submitting} = this.props;
+
+    console.log(this.props.error)
+
+    const {handleSubmit, load, pristine, reset, submitting} = this.props;
     return (
       <Header>
         <NavLogo>
@@ -80,23 +83,36 @@ class Signup extends Component {
           </a>
           <div className="login-body">
             <div className="login-content login-form hybrid-login-form hybrid-login-form-signup">
-              <div className="hybrid-login-form-main"><h1>Sign Up</h1>
-                <h3 style={{color:"white"}}>Use SJSU(@sjsu.edu) email Address to Signup as an admin</h3>
+              <div className="hybrid-login-form-main"><h1>Add Movie</h1>
                 <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                  <Field name="email" type="text" id="Username" className ="signin-text" placeholder ="Email Address" component={this.renderField}/>
-                  {error ? (<h3 style={{color:"red"}}>{error}</h3>) : (<h3/>)}
-                  <Field name="firstname" type="text" id="firstname" className ="signin-text" placeholder ="First Name" component={this.renderField}/>
-                  <Field name="lastname" type="text" id="lastname" className ="signin-text" placeholder ="Last Name" component={this.renderField}/>
-                  <Field name="password" type="password" className=  "signin-text" placeholder = "Password" maxLength="40" id="PasswordBox"
-                         component={this.renderField}/>
-                  <Field name="confirmpassword" type="password" className=  "signin-text" placeholder = "Confirm Password" maxLength="40" id="confirmBox"
-                         component={this.renderField}/>
+                <table >
+                    <tr>
+                        <td><Field name="movietitle" type="text" id="movietitle" className ="signin-text" placeholder ="Movie Title" component={this.renderField}/></td>
+                        <td><Field name="moviegenre" type="text" id="moviegenre" className ="signin-text" placeholder ="Movie Genre" component={this.renderField}/></td>
+                    </tr>
+                    <tr>
+                        <td><Field name="movieyear" type="text" id="movieyear" className ="signin-text" placeholder ="Movie Year" component={this.renderField}/></td>
+                        <td><Field name="moviestudio" type="text" id="moviestudio" className ="signin-text" placeholder ="Movie Studio" component={this.renderField}/></td>
+                    </tr>
+                    <tr>
+                        <td><Field name="moviesynopsis" type="text" id="moviesynopsis" className ="signin-text" placeholder ="Movie Synopsis" component={this.renderField}/></td>
+                        <td><Field name="movieimage" type="text" id="movieimage" className ="signin-text" placeholder ="Movie Image" component={this.renderField}/></td>
+                    </tr>
+                    <tr>
+                        <td><Field name="movieactors" type="text" id="movieactors" className ="signin-text" placeholder ="Movie Actors" component={this.renderField}/></td>
+                        <td><Field name="moviecountry" type="text" id="moviecountry" className ="signin-text" placeholder ="Movie Country" component={this.renderField}/></td>
+                    </tr>
+                    <tr>
+                        <td><Field name="movierating" type="text" id="movierating" className ="signin-text" placeholder ="Movie Rating" component={this.renderField}/></td>
+                        <td><Field name="movievideo" type="text" id="movievideo" className ="signin-text" placeholder ="Movie Video" component={this.renderField}/></td>
+                    </tr>
+                </table>
+                  <Field name="movieavailability" type="text" id="movieavailability" className ="signin-text" placeholder ="Movie Availability" component={this.renderField}/>
                   <button type="submit" disabled={pristine || submitting} className="submit btn mt-2"
-                          alternatetext="Sign In">Sign Up
-                  </button>
+                          alternatetext="Sign In">Submit</button>
                 </form>
               </div>
-              <div className="login-signup-now">Existing User? <Link to="/signin">Sign in</Link></div>
+              <div className="login-signup-now">Don't want to add <Link to="/dashboard">Cancel</Link></div>
             </div>
           </div>
         </NavLogo>
@@ -112,25 +128,14 @@ function validate(values) {
   if (!values.email) {
     errors.email = 'Please enter Username or email address\n';
   }
+
   if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = "Please enter a valid email address";
   }
-  if (!values.firstname) {
-    errors.firstname = 'Please enter firstname';
-  }
-  if(!values.lastname){
-    errors.lastname = 'please enter your lastname';
-  }
+
   if (!values.password) {
     errors.password = 'Please enter password';
   }
-  if(!values.confirmpassword){
-    errors.confirmpassword = 'please confirm your password';
-  }
-  else if( (values.password > 5) && (values.password !== values.confirmpassword)){
-    errors.confirmpassword = 'passwords don\'t match please enter again';
-  }
-
   //if errors is empty , the form is fine to submit
   //if errors has *any* properties, redux form assumes that form is invalid
   return errors;
@@ -138,16 +143,14 @@ function validate(values) {
 
 
 function mapStateToProps(state) {
-  return ({
-    error: (state.userSignup && state.userSignup.error) && state.userSignup.error.message || null
-  })
+  // return ({error: state.user.message})
 }
 
 
 function mapDispatchToProps(dispatch) {
   return {
     ...bindActionCreators({
-      doSignup
+      addMovie
     }, dispatch)
 
   };
@@ -155,5 +158,5 @@ function mapDispatchToProps(dispatch) {
 
 export default reduxForm({
   validate,
-  form: 'SignUp'
-})(connect(mapStateToProps, mapDispatchToProps)(Signup));
+  form: 'MovieAdd'
+})(connect(mapStateToProps, mapDispatchToProps)(MovieAdd));

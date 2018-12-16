@@ -1,0 +1,121 @@
+.movieadd-body {
+    margin: 0 auto -236px;
+    background-color: transparent;
+    max-width: 90%;
+    color: #333;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.login-form {
+margin-bottom: 10px;
+}
+.login-content {
+min-width: 380px;
+padding: 40px;
+padding-top: 20px;
+background-color: #f3f3f3;
+}
+
+.movieadd-body{
+    width: 500px;
+    margin: 0 auto;
+}
+.movieadd-body h1{
+   font-size: 2.5em;
+    color: white;
+}
+
+.addmovie-text {
+display:block;
+width: 90%;
+margin: 0.5em 0 1em 1em;
+padding:0.5em;
+color:#333333;
+border-radius: 5px;
+border: 1px solid #e2e2e2;
+font-size: 16px;
+}
+.addmovie-text:focus {
+outline: 0;
+}
+.submit {
+background-color:#e50914;
+display: inline-block;
+color:white;
+font-size: 16px;
+border: 0;
+border-radius: 8px;
+cursor:pointer;
+padding: 1em;
+text-align:center;
+transition: .2s ease-in-out;
+width: 50%;
+align-items: center;
+}
+.submit:hover {
+background-color: #e53c3c;
+transition: .2s ease-in-out;
+}
+.invalid {
+border: 1px solid red !important;
+}
+.has-danger{
+color: red;
+}
+
+.signup-link{
+color: white;
+margin-top: 20px;
+margin-left: -20px;
+float: left;
+}
+.signup-btn{
+margin-top: 20px;
+}
+.login-signup-now {
+color: #737373;
+font-size: 16px;
+font-weight: 500;
+margin-top: 16px;
+}
+.login-signup-now a {
+color: #fff;
+}
+.movie-add-container h1{
+    color: #ffe400;
+    margin-bottom: 15px;
+}
+.form-label{
+    font-size: 20px;
+    color: white;
+}
+.movieadd-btn{
+    background-color:red ;
+    border-color: red;
+    display: inline-block;
+    color: white;
+    font-size: 16px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 1em;
+    float: left;
+    margin: 0 30%;
+    text-align: center;
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    align-items: center;
+}
+
+.signin-dropdown{
+    display:block;
+    width: 90%;
+    margin: 0.5em 0 1em 1em;
+    height: 40px;
+    padding :25px 0 ;
+    color:#333333;
+    border-radius: 5px;
+    border: 1px solid #e2e2e2;
+    font-size: 16px;
+}

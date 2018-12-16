@@ -5,19 +5,23 @@ import {connect} from "react-redux";
 import {fetchUser} from "../actions/SigninActions";
 import Dashboard from "./Dashboard";
 import app from "./Firebase";
-class PrivateRoute extends Component {
+class AdminRoute extends Component {
   constructor(props){
     super(props);
     // this.getCurrentUser = this.getCurrentUser.bind(this);
+    this.checkUserisAdmin = this.checkUserisAdmin.bind(this);
   }
 
-  componentDidMount() {
-      this.props.fetchUser()
-    }
-    render(){
+  checkUserisAdmin() {
+    let user = localStorage.getItem('user');
+    console.log("user email", user);
+    return (user.includes('@sjsu.edu'));
+  }
+  render(){
     const{component: Component, ...props } = this.props;
-      console.log(this.props.user);
-      if(this.props.user.isFetching){
+    let user = this.checkUserisAdmin();
+    console.log(this.props.user);
+    if(user){
       return (
         <div>
         </div>
@@ -28,21 +32,14 @@ class PrivateRoute extends Component {
         <Route
           {...props}
           render={props => (
-            this.props.user.data ?
+            this.props.user ?
               <Component {...props} /> :
               <Redirect to='/signin' />
           )}
         />
       );
     }
-    }
-}
-
-function mapStateToProps(state){
-  return{
-    user: state.user
   }
 }
 
-
-export default connect(mapStateToProps,{fetchUser}) (PrivateRoute);
+export default AdminRoute;

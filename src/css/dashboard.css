@@ -135,9 +135,10 @@ p {
     -webkit-transition: background .125s ease;
     transition: background .125s ease;
     border-radius: 3px;
+    color: #ffffff;
 }
 .Navigation ul li:hover {
-    background: #e50914;
+    background: #ac070f;
     cursor: pointer;
 }
 
@@ -338,7 +339,8 @@ p {
 }
 
 .TitleList {
-    padding: 0px;
+    padding: 20px 40px;
+    /*padding: 0px;*/
     box-sizing: border-box;
     -webkit-transition: opacity 3s ease;
     transition: opacity 3s ease;
@@ -354,7 +356,8 @@ p {
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin: -30px 0;
+    margin: 20px 0;
+    /*margin: -30px 0;*/
     width: calc(100vw - 80px);
     box-sizing: border-box;
     -webkit-box-pack: justify;

@@ -1,0 +1,120 @@
+.movie-pop-ups
+{
+    width: 300px;
+    height: 450px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.75);
+    padding: 10px;
+    display: none;
+}
+
+.movie-pop-ups > p
+{
+    font-size: 12px;
+    overflow-y: scroll;
+    width: 280px;
+    padding: 10px;
+    height: 200px;
+}
+
+.movie-pop-ups > h1
+{
+    text-align: left;
+    font-size: 200%;
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.movie-detail {
+    position: fixed;
+    width: 85%;
+    height: 70%;
+    background-color: black;
+    z-index: 10;
+    top: 200px;
+    left: 130px;
+    display: flex;
+    padding: 20px;
+}
+.movie-detail-image{
+    margin: 20px;
+    position: absolute;
+    width: 400px;
+    height: 500px;
+}
+
+.movie-details-desc{
+    /*background-color: #424242;*/
+    /*color: #f4f3ef;*/
+    margin-top: 20px;
+    margin-left: 500px;
+    height: 94%;
+    position: absolute;
+    overflow-y: scroll;
+    text-align: left;
+}
+
+.movie-details-desc h1 {
+    font-size: 2.5rem;
+    text-align: left !important;
+}
+.movie-details-desc h2 {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    width: 150px;
+    font-size: 22px;
+    color: #ffcf39;
+}
+
+.rateNumber {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: yellow;
+}
+.star-window {
+    margin-left: 10px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    height: 35px;
+    width: 97px;
+}
+
+
+
+.description-div{
+    margin-bottom: 10px;
+    margin-right: 25px;
+    text-align: justify-all;
+}
+
+.warning-btn{
+    background-color: red;
+    border-color: red;
+    display: inline-block;
+    color: white;
+    font-size: 16px;
+    border: 0;
+    border-radius: 8px;
+    padding: 1em;
+    float: left;
+    margin: 1em;
+    text-align: center;
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    align-items: center;
+}
+
+#contained-modal-title-lg{
+    width: 800px;
+}
+
+.styles_modal__gNwvD{
+    max-width: 1800px ;
+    background-color: black;
+    padding: 0;
+
+}
+
+.styles_closeButton__20ID4{
+    color:yellow;
+}

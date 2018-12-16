@@ -1,15 +1,12 @@
 import React,{Component} from 'react';
 import createReactClass from 'create-react-class';
 import {connect} from "react-redux";
-import Logo from './Login/Logo.js';
+import {Link} from "react-router-dom";
 import '../css/dashboard.css';
 import {getAllMovies} from "../actions/MoviesActions";
-import {doSignout} from "../actions/LoginActions"
+import {doSignout} from "../actions/SigninActions"
 import {bindActionCreators} from "redux";
-import {doSignin} from "../actions/LoginActions";
 import {LOGO} from "../constants";
-import usersvg from "../img/user-solid.svg"
-import ImageCarousel from "./ImageCarousel";
 import '../css/ImageCarousel.css';
 import UserProfile from "./UserProfile";
 /////////////////
@@ -36,8 +33,9 @@ var Dashboard = createReactClass({
     this.setState({searchTerm : e.target.value});
   },
   render: function() {
-    // console.log('logging in dash');
-    console.log(this.props.user);
+    console.log('logging in dash');
+    console.log(this.props.user.data);
+    // console.log(this.props.user.data.email.includes('@sjsu.edu'));
     return (
       <div>
         <header className="Header">
@@ -49,13 +47,13 @@ var Dashboard = createReactClass({
           </div>
          <UserProfile/>
         </header>
-        <Hero />
+        {/*<Hero />*/}
         <TitleList title={`Search Results for "${this.state.searchTerm}"`} url={this.state.searchUrl} />
-        <TitleList title="Top TV picks for Jack" url='discover/tv?sort_by=popularity.desc&page=1' />
+        <TitleList title="Top TV picks" url='discover/tv?sort_by=popularity.desc&page=1' />
         <TitleList title="Trending now" url='discover/movie?sort_by=popularity.desc&page=1' />
-        <TitleList title="Most watched in Horror" url='genre/27/movies?sort_by=popularity.desc&page=1' />
-        <TitleList title="Sci-Fi greats" url='genre/878/movies?sort_by=popularity.desc&page=1' />
-        <TitleList title="Comedy magic" url='genre/35/movies?sort_by=popularity.desc&page=1' />
+        <TitleList title="Most watched" url='genre/27/movies?sort_by=popularity.desc&page=1' />
+        {/* <TitleList title="Sci-Fi greats" url='genre/878/movies?sort_by=popularity.desc&page=1' /> */}
+        {/* <TitleList title="Comedy magic" url='genre/35/movies?sort_by=popularity.desc&page=1' /> */}
       </div>
     );
   }
@@ -66,13 +64,13 @@ var Dashboard = createReactClass({
 export const Navigation = createReactClass({
   render() {
     return (
+
       <div id="navigation" className="Navigation">
         <nav>
           <ul>
-            <li>Browse</li>
-            <li>My list</li>
-            <li>Top picks</li>
-            <li>Recent</li>
+            <li><a href="/movieadd">Add Movie</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Reports</a></li>
           </ul>
         </nav>
       </div>
@@ -92,7 +90,7 @@ var Hero = createReactClass({
         <div className="content">
           <img className="logo" src="http://www.returndates.com/backgrounds/narcos.logo.png" alt="narcos background" />
           <h2>Season 2 now available</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque id quam sapiente unde voluptatum alias vero debitis, magnam quis quod.</p>
+          <p>Movie Box chronicles the rise of the cocaine trade in Colombia and the gripping real-life stories of drug kingpins of the late '80s in this raw, gritty original series. Also detailed are the actions taken by law enforcement as they battle in the war on drugs, targeting notorious and powerful figures that include drug lord Pablo Escobar. As efforts are made to control cocaine, one of the world's most valuable commodities, the many entities involved -- legal, political, police, military and civilian -- find themselves in conflict.</p>
           <div className="button-wrapper">
             <HeroButton primary={true} text="Watch now" />
             <HeroButton primary={false} text="+ My list" />
@@ -151,6 +149,8 @@ export var TitleList = createReactClass({
 
   },
 
+
+
   render: function() {
     var titles ='';
     if(this.state.data.results) {
@@ -165,7 +165,7 @@ export var TitleList = createReactClass({
           }
 
           return (
-            <ImageCarousel key={title.id} title={name} score={title.vote_average} overview={title.overview} backdrop={backDrop}/>
+            <CarousalItem key={title.id} title={name} score={title.vote_average} overview={title.overview} backdrop={backDrop}/>
           );
 
         }else{
@@ -194,13 +194,26 @@ export var TitleList = createReactClass({
   }
 });
 
-const Arrow = ({ direction, clickFunction, glyph }) => (
-  <div
-    className={ `slide-arrow ${direction}` }
-    onClick={ clickFunction }>
-    { glyph }
-  </div>
-);
+var CarousalItem = createReactClass({
+  render: function() {
+    return (
+      <div className="tile">
+        <div className="tile__media">
+          <Link to ="/movieDetail/{}">
+            <img className="tile__img" src={this.props.backdrop} alt=""/>
+          </Link>
+        </div>
+        <div className="">
+          <div className="tile__title">
+            {this.props.title}
+          </div>
+        </div>
+      </div>
+    );
+  }
+});
+
+
 // Title List Item
 var Item = createReactClass({
   render: function() {
@@ -256,5 +269,4 @@ function mapDispatchToProps(dispatch) {
     }, dispatch)
   }
 }
-
 export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);

@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {doSignout} from "../actions/LoginActions";
+import {doSignout} from "../actions/SigninActions";
 
 class UserProfile extends Component{
   constructor(props){
@@ -17,7 +17,10 @@ class UserProfile extends Component{
     return (
       <div className="UserProfile">
         <div className="User">
-          <button className="name" onClick={this.handleSignout}> Signout </button>
+          <a style={{fontSize: '18px', color: 'white', marginRight:'20px'}} href="/getSubscription">Get Subscription</a>
+          <ul>
+              <li onClick={this.handleSignout}>Signout</li>
+          </ul>
         </div>
       </div>
     );
